@@ -1,0 +1,37 @@
+[MILESTONES ELEMENTS]
+
+[{
+	pos: "1",
+	time: "2016 4Q",
+	bullet: "EIT Health grant recieved for vizualisation work",
+} 
+
+{	pos: "2",
+	time:"2017 1Q", 
+	bullet: "Visualization collaboration with KTH begins – Student projects.",
+			"Ethical permission to review medical records approved.",}
+
+{	pos: "3",
+	time:"2017 2Q", 
+	bullet: "eCRF for pilot data collection finalised",
+			"Cohort of CRPC patients identified",}
+
+{	pos: "4",
+	time:"2017 3Q", 
+	bullet: "SAP for pilot data analysis ready.",
+			"Pilot data (200 pts) collection start",
+			"Manuscript lit review ready",}
+
+{ 	pos: "5",
+	time:"2017 4Q",
+	bullets: 	"Lit review manuscript submission",
+				"Analysis of pilot data ready",
+				"Abstract submission natural history ASCO (pilot data)",
+				"Full data collection start",}
+
+{	pos: "6",
+	time:"2018 1Q",
+	bullets: 	"SAP for comorbidity study approved.",
+				"Visualization prototype ready",
+				"New postdoc ",}
+]

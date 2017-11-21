@@ -1,5 +1,5 @@
-var chart = d3.select("#psoriasisDisease");
-var milestones = document.getElementById('psoriasisDisease');
+var chart = d3.select("#bCell");
+var milestones = document.getElementById('bCell');
 var rect = milestones.getBoundingClientRect()
 
 console.log(chart.node());
@@ -10,33 +10,33 @@ var chartElements =
           [{
             ID: "1",
             time: "2016 4Q",
-            bullet: "ISPE abstract submitted (Study 1)",
+            bullet: "Prel results Study 5",
           }, 
 
           { ID: "2",
             time:"2017 1Q", 
-            bullet: " "},
+            bullet: "Data collection preparation for phase 2 (DLBCL). Abstract Lugano (study 5)"},
 
           { ID: "3",
             time:"2017 2Q", 
-            bullet: "SAP for Study 2 finalised. Data analysis Study 2 started."},
+            bullet: "Data collection phase 1 (FL) to commence   eCRF DLBCL studies finalized  Oral presentation Lugano (Study 5)"},
 
           { ID: "4",
             time:"2017 3Q", 
-            bullet: "Poster presentation ISPE (Study 1).",
+            bullet: "Roll-out data phase 2 (DLBCL) eCRF FL studies finalized",
           },
 
           { ID: "5",
             time:"2017 4Q",
-            bullet: " Abstract submission NORPEN (study 2), Manuscript Study 1, SAP for Study 3"},
+            bullet: " SAP DLBCL study  SAP FL pilot study  Pilot data collection FL study Manuscript Study 5 submitted to JCO"},
 
           { ID: "6",
             time:"2018 1Q",
-            bullet:  "Abstract submission comorbidity study. Study 3A started"},
+            bullet:  "Analysis FL pilot study ready Full data collection FL study start Abstract EHA (DLBCL)."},
 
           { ID: "7",
             time:"2018 2Q",
-            bullet:  "Manuscript Study 2 ready for submission"}
+            bullet:  "SAP FL study ready"}
           ];
 
 

@@ -1,5 +1,5 @@
-var chart = d3.select("#psoriasisDisease");
-var milestones = document.getElementById('psoriasisDisease');
+var chart = d3.select("#TRD");
+var milestones = document.getElementById('TRD');
 var rect = milestones.getBoundingClientRect()
 
 console.log(chart.node());
@@ -10,33 +10,33 @@ var chartElements =
           [{
             ID: "1",
             time: "2016 4Q",
-            bullet: "ISPE abstract submitted (Study 1)",
+            bullet: "Definition of TRD for the purposes of the included studies approved",
           }, 
 
           { ID: "2",
             time:"2017 1Q", 
-            bullet: " "},
+            bullet: "SAP substance abuse study ready"},
 
           { ID: "3",
             time:"2017 2Q", 
-            bullet: "SAP for Study 2 finalised. Data analysis Study 2 started."},
+            bullet: "Analysis ready mortality study Submit abstract (mortality) for ECNP   New postdocs recruited"},
 
           { ID: "4",
             time:"2017 3Q", 
-            bullet: "Poster presentation ISPE (Study 1).",
+            bullet: "SAP definition study  Presentation of mortality abstract ECNP  Optum data definition  manuscript/  anaylsis input",
           },
 
           { ID: "5",
             time:"2017 4Q",
-            bullet: " Abstract submission NORPEN (study 2), Manuscript Study 1, SAP for Study 3"},
+            bullet: "Manuscript Study 2 ready for submission  SAP Study 3 ready  Analysis Study 1 and 3"},
 
           { ID: "6",
             time:"2018 1Q",
-            bullet:  "Abstract submission comorbidity study. Study 3A started"},
+            bullet:  "Manuscript  Study 1  Abstract submission definition stydy Abstract submission substance abuse study ready"},
 
           { ID: "7",
             time:"2018 2Q",
-            bullet:  "Manuscript Study 2 ready for submission"}
+            bullet:  "Manuscript Study 3"}
           ];
 
 

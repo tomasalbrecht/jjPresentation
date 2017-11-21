@@ -65,7 +65,7 @@ var bullets = chart.append("g")
 
 // Create a Line // 
 
-var line = circlegroup.append("line")
+vvar line = circlegroup.append("line")
 
 var elements = chart.selectAll("circle")
                            .data(circleData);
@@ -81,34 +81,36 @@ var bullets = elmEnter.append("text");
 
 
 var rectAttributes = rects
-                    .attr("class", "col-8") //this class here gives width
-                    // .attr("width", "225")
-                    .attr("height", "200")
-                    .attr("fill", "rgba(0, 0, 0, 0.1)")
+                    .attr("class", "superBox") //this class here gives width
+                    .attr("width", "12.5%")
+                    .attr("height", 150)
+                    .attr("fill", "rgba(0, 0, 50, 0.5)")
                     .attr("transform", function(d, i) {
                       return "translate(" + [i*xPos, 30] + ")"
                     });;
 
 var lineAttributs = line
                     .attr("stroke", "black")
+                    .attr("stroke-width", 4)
                     .attr("opacity", 0.8)  // colour the line
-                    .attr("x1", function(d){return 25})     // x position of the first end of the line
+                    .attr("x1", function(d){return  65.2})     // x position of the first end of the line
                     .attr("y1", 30)      // y position of the first end of the line
-                    .attr("x2", function(d){return 6*xPos + 25})     // x position of the second end of the line
+                    .attr("x2", function(d){return 5*xPos +  65.2})     // x position of the second end of the line
                     .attr("y2", 30)
 
 var circleAttributes = circles
-                       .attr("cx", function(d, i){ return i * xPos + 25 })
+                       .attr("cx", function(d, i){ return i * xPos +  65.2 })
                        .attr("cy", 30)
                        .attr("r", 25)
                        .attr("class", "circles")
+
 
 var textAtributes = titles
                     .attr("class", "titles")
                     .attr("margin", "2px")
                     .text(function (d) {return d.time})
                     .attr("transform", function(d, i) {
-                      return "translate(" + [i*xPos, 0] + ")"
+                      return "translate(" + [i*xPos+(62.5/2), 0] + ")"
                     });
 
 var bulletAtributes = bullets
@@ -116,6 +118,7 @@ var bulletAtributes = bullets
                     .text(function (d) {return d.bullet})
                     .attr("y", 65)
                     .attr("dy", 1)
+                    .style("margin", "20px")
                     .attr("transform", function(d, i) {
                       return "translate(" + [i*xPos, 0] + ")"
                     });
@@ -131,7 +134,7 @@ function wrap(text, width) {
         lineHeight = 1.1, // ems
         y = text.attr("y"),
         dy = parseFloat(text.attr("dy")),
-        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+        tspan = text.text(null).append("tspan").attr("x", 10).attr("y", y).attr("dy", dy + "em");
     while (word = words.pop()) {
       line.push(word);
       tspan.text(line.join(" "));
@@ -139,7 +142,7 @@ function wrap(text, width) {
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
-        tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+        tspan = text.append("tspan").attr("x", 10).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
       }
     }
   });
@@ -148,7 +151,6 @@ function wrap(text, width) {
 
 
 wrap(bullets, 120)
-
 
 function defPos() {
   d3.select(this).attr("cx", index*offset);

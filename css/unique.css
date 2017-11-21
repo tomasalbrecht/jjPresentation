@@ -2042,10 +2042,12 @@ blockquote {
   width: 100%;
   display: inline-block;
   font-size: 0;
-  line-height: 0; }
+  line-height: 0;
+  min-height: 220px; }
 
 .titles {
-  font-size: 16px; }
+  font-size: 16px;
+  font-weight: 600; }
 
 .bullets {
   font-size: 12px;
@@ -2088,6 +2090,9 @@ blockquote {
   stroke: black;
   stroke-width: 3px; }
 
+.circles:hover {
+  fill: #57aff5; }
+
 .line {
   color: black;
   fill: black;
@@ -2095,5 +2100,11 @@ blockquote {
 
 project2 {
   background-color: #2196f3; }
+
+.superBox {
+  fill: rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+  color: orange;
+  width: 12.5%; }
 
 /*# sourceMappingURL=unique.css.map */

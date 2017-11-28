@@ -8,6 +8,11 @@ $lighterBlue: #57aff5;
 $lightGray: #9c9c9c;
 $red: red;
 
+$animation1: $lightBlue;
+$animation3: $lighterBlue;
+$animation2: #1a77c1;
+$animation4: #4d84b0;
+
 /* Colors for Publication */
 
 $colorBCell: #2B60DE;
@@ -59,6 +64,9 @@ a, .la-ball-triangle-path {
 a:hover, #header.nav-solid nav a:hover {
     color:$lightBlue;
 }
+#header nav a:hover {
+opacity: 1;
+color: #2196f3; }
 
 /* Default Icon Color */
 
@@ -215,6 +223,7 @@ body {
     font-size: $font30; 
     font-weight:700;
     color:$Black;
+    padding-top: 20px;
 }
 
 .section-subtitle {
@@ -330,7 +339,7 @@ body {
 }
 
 p {
-    line-height: 25px;
+    line-height: 20px;
     text-align: justify;
     text-justify: inter-word;
 }
@@ -424,6 +433,9 @@ figure {
 section {
     clear: both;
     overflow: hidden;
+    background: white;
+    box-shadow: 0px -5px 5px #0000004f;
+
 }
 
 /* Rows and Columns */
@@ -455,7 +467,7 @@ section {
 
 [class*='col-'] {
     float: left;
-    padding: 20px;
+    padding: 5px 20px 5px 20px;
 }
 
 #clients .col-2-3 [class*='col-'] {
@@ -977,11 +989,11 @@ h4 {
 }
 
 h5 {
-    padding: 7px 0;
+    padding: 5px 0;
 }
 
 h6 {
-    padding: 7px 0;
+    padding: 0px 0;
 }
 
 /* Text Alignment */
@@ -2608,8 +2620,9 @@ blockquote {
 }
 
 
-#teamResearchSummary {
+div#teamResearchSummary {
     background-color: $White;
+    height: 100%;
 }
 
 .projects h6 {
@@ -2648,7 +2661,8 @@ blockquote {
     display: inline-block;
     font-size: 0;
     line-height: 0; 
-    min-height: 220px;   
+    min-height: 250px;
+    padding: 25px;   
 }
 
 .titles {
@@ -2672,11 +2686,23 @@ blockquote {
     display: inline-block;
     font-size: $font14;
     min-height: 300px;
+    stroke: 3px solid red;
 }
 
 .download:hover {
     box-shadow: $innerShadow;
-    color: yellow;
+    font-weight: $bold;
+    stroke-dashoffset: 1000;
+    animation: 5s linear alternate infinite;
+}
+
+@keyframes dash {
+  from {
+   color: $lightBlue;
+  }
+  to {
+   color: $animation2;
+  }
 }
 
 .b-cell {
@@ -2705,7 +2731,31 @@ blockquote {
     border: 3px solid black;
     stroke: black;
     stroke-width: 3px;
+    animation: thingy 3s infinite;
 }
+
+.circles:nth-child(1) { animation-delay: .5s }
+.circles:nth-child(2) { animation-delay: 1s }
+.circles:nth-child(3) { animation-delay: 1.5s }
+.circles:nth-child(4) { animation-delay: 2s }
+
+
+@keyframes thingy {
+  0% {
+    transform: scale(.1, .1);
+    opacity: 1;
+    border-width: 2;
+  }
+  
+  100% {
+    transform: scale(1,1);
+    opacity: 0;
+    border-width: 0;
+  }
+ 
+}
+
+
 
 .circles:hover {
     fill: $lighterBlue;
@@ -2728,3 +2778,14 @@ project2 {
     width: 12.5%;
 
 }
+
+
+#clients {
+    background: white;
+}
+
+#PUBLICATIONS {
+    background: white;
+}
+
+

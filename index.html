@@ -10,12 +10,16 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
     <link rel="shortcut icon" href="images/hospital.ico" title="Favicon"/>
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.min.js"> </script>
+    
     <!-- Unique CSS -->
     <link rel="stylesheet" href="css/unique.css">
+    <!-- <link rel="stylesheet" href="css/animate.css"> -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link href="css/animate.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 
 <!-- All this stuff is for the timeline, this is a testfor now. -->
@@ -133,7 +137,7 @@
             <div id="mission" class="row clearfix">
 
                 <div class="col-3" layout="column">
-                    <div class="section-heading">
+                    <div class="section-heading animated zoomInDown ">
                         <h3>Mission</h3>
                         <h2 class="section-title">This collaboration will be a world leading academia/pharmaceutical industry cooperation for RWE research &amp; methodology development in order to understand and improve outcomes for the patients and societies
                         </h2>
@@ -174,9 +178,9 @@
         </section>
 
 <!-- PROSTATE CANCER SUMMARY -->
-        <section id="prostateCancer" class="introduction scrollto">
+        <section id="prostateCancer" class="introduction scrollto prostateScroll">
 
-            <div id="teamResearchSummary" class="row clearfix projects">
+            <div id="teamResearchSummary" class="row clearfix projects boxShadow">
             <div class="section-heading">
                 <h2 class="section-title"> <b> Prostate Cancer </b>: Team Research Summary </h2> 
             </div>
@@ -267,9 +271,9 @@
 
 <!-- PSORIASIS CANCER SUMMARY -->
       
-        <section id="psoriasis" class="introduction scrollto">
+        <section id="psoriasis" class="introduction scrollto psoriasisScroll">
 
-        <div id="teamResearchSummary" class="row clearfix projects">
+        <div id="teamResearchSummary" class="row clearfix projects boxShadow">
                 <div class="section-heading">
                     <h2 class="section-title"> <b> Psoriasis </b>: Team Research Summary </h2> 
                 </div>
@@ -356,9 +360,9 @@
         </section>
 
 <!-- METHODS TEAM SUMMARY -->
-        <section id="methodsTeam" class="introduction scrollto">
+        <section id="methodsTeam" class="introduction scrollto methodsScroll">
 
-            <div id="teamResearchSummary" class="row clearfix projects">
+            <div id="teamResearchSummary" class="row clearfix projects boxShadow">
                 <div class="section-heading">
                     <h2 class="section-title"> <b> Methods Team </b>: Team Research Summary </h2> 
                 </div>
@@ -451,7 +455,7 @@
 
 <!-- B-CELL CANCER SUMMARY -->
 
-        <section id="bCellCancer" class="introduction scrollto">
+        <section id="bCellCancer" class="introduction scrollto bCell">
 
         <div id="teamResearchSummary" class="row clearfix projects">
             <div class="section-heading">
@@ -542,7 +546,7 @@
 
 <!--  TRD Research Cancer Summary        -->
 
-        <section id="TRDTeam" class="introduction scrollto">
+        <section id="TRDTeam" class="introduction scrollto TRDTeam">
 
             <div id="teamResearchSummary" class="row clearfix projects">
             <div class="section-heading">
@@ -643,7 +647,7 @@
 
 
         <!--Gallery-->
-        <section id="PUBLICATIONS">
+        <section id="PUBLICATIONS" class="Publications">
 
         <aside id="publications" class="row text-center scrollto clearfix" data-featherlight-gallery
                  data-featherlight-filter="a">
@@ -652,7 +656,11 @@
                 <h2 class="section-title"> Publications </h2> 
             </div>
 
-                 <a  href="pdf/pdf-test.pdf" download="Super PDF File"> <button class="download b-cell col-3 wow fadeIn" data-wow-delay="0.1s"  data-wow-delay="0.3s"> Lomustine plus Bevacizumab in Recurrent Glioblastoma </button> </a>
+            <!-- <div id="publications" class="milestones" layout="row" > 
+                     <svg id="milestones" class="col-1 drawingBoard" > </svg>
+            </div>  --> 
+
+            <a  href="pdf/pdf-test.pdf" download="Super PDF File"> <button class="download b-cell col-3 wow fadeIn" data-wow-delay="0.1s"  data-wow-delay="0.3s"> Lomustine plus Bevacizumab in Recurrent Glioblastoma </button> </a>
                       
                 <a  href="pdf/pdf-test.pdf" download="Super PDF File"> <button  class="download b-cell col-3 wow fadeIn" data-wow-delay="0.1s" href="pdf/pdf-test.pdf" download="Super PDF File"  data-wow-delay="0.2s"> Long-term survival and loss in expectancy of life in a population-based cohort of 7114 patients with diffuse large B-cell lymphoma (DLBCL) </button> </a>
                   
@@ -675,7 +683,12 @@
 
         <!--Clients-->
         <section id="clients" class="scrollto clearfix">
+
             <div class="row clearfix">
+            <div class="section-heading">
+                <h2 class="section-title"> </h2> 
+            </div>
+            
 
             <div layout="row">
                 <div class="col-2">
@@ -720,10 +733,10 @@
 <script src="js/d3.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="js/jquery.1.8.3.min.js"></script>
-<script src="js/wow.min.js"></script>
+<script src="js/wow.min.js"></script><!-- 
 <script src="js/featherlight.min.js"></script>
-<script src="js/featherlight.gallery.min.js"></script>
-<!-- <script src="js/jquery.enllax.min.js"></script> -->
+<script src="js/featherlight.gallery.min.js"></script> -->
+<script src="js/jquery.enllax.min.js"></script>
 <script src="js/jquery.scrollUp.min.js"></script>
 <script src="js/jquery.easing.min.js"></script>
 <script src="js/jquery.stickyNavbar.min.js"></script>
@@ -738,6 +751,36 @@
 <script src="js/drawd3-methods.js"></script>
 <script src="js/drawd3-bCell.js"></script>
 <script src="js/drawd3-TRD.js"></script>
+<!-- <script src="js/draw_publications.js"></script> -->
+
+<script>
+        $(function () { // wait for document ready
+            const log = console.log;
+            // init
+            var controller = new ScrollMagic.Controller({
+                globalSceneOptions: {
+                    triggerHook: 0
+                }
+            });
+        // get all slides
+        var slides = document.querySelectorAll("section");
+        for (var i=0; i<slides.length; i++) {
+            var offset_y = slides[i].clientHeight - window.innerHeight;
+            offset_y = offset_y < 0 ? 0: offset_y;
+            log(offset_y)
+            new ScrollMagic.Scene({
+                    triggerElement: slides[i]
+                })
+                .setPin(slides[i], {pushFollowers: true})
+                .offset(offset_y)
+                .addTo(controller);
+        }
+                        });
+
+    
+
+</script>
+  
 
 </body>
 </html>

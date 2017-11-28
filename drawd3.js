@@ -4,11 +4,11 @@ var chart = d3.select("#milestones");
 
 var milestones = document.getElementById('milestones');
 var rect = milestones.getBoundingClientRect()
-
+console.log("eita porra")
 console.log(chart.node());
 width = chart.node().clientWidth;
 height = chart.node().clientHeight;	
-console.log("new attempt", rect.width, height)
+// console.log("new attempt", rect.width, height)
 
 
 var chartElements =
@@ -125,3 +125,7 @@ var newLines = chart.append("lines")
                   .attr("x2", 60)
                   .attr("y2", 60)
                   .attr("stroke-width", 30);
+
+
+console.log("wow circles!");
+console.log(circlegroup);

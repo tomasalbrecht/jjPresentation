@@ -10,33 +10,44 @@ var chartElements =
           [{
             ID: "1",
             time: "2016 4Q",
-            bullet: "ISPOR Poster Presentation (Study 0), National OMOP/OHDSI meeting, Preliminary CDM for the Swedish prescribed drug register",
+          bullet: ["ISPOR Poster Presentation (Study 0)",
+                   "National OMOP/OHDSI meeting",
+                   "Preliminary CDM for the Swedish prescribed drug register"],
           }, 
 
           { ID: "2",
             time:"2017 1Q", 
-            bullet: "ICPE Abstract Submission (Study 0) Project protocol finalised. Preparing the review article (study 0) "},
+            bullet: ["ICPE Abstract Submission (Study 0)",
+                     "Project protocol finalised.",
+                     "Preparing the review article (study 0)"]},
 
           { ID: "3",
             time:"2017 2Q", 
-            bullet: "Submission manuscript (study 0) SAP Study 1 in process"},
+            bullet:[ "Submission manuscript (study 0)","SAP Study 1 in process"]},
 
           { ID: "4",
             time:"2017 3Q", 
-            bullet: "Final CDM the Swedish prescribed drug register, SAP study 1 finalised, ICPE Poster presentation",
+            bullet: ["Final CDM the Swedish prescribed drug register",
+                     "SAP study 1 finalised","ICPE Poster presentation"],
           },
 
           { ID: "5",
             time:"2017 4Q",
-            bullet: "Planning abstract for next ICPE 2018   (Study 1) Preparing manuscript (study 1) Data analysis Study 1 Review Study 0 SAP Study 2 in process"},
+            bullet: ["Planning abstract for next ICPE 2018",
+                     "(Study 1) Preparing manuscript (study 1)",
+                     "Data analysis Study 1",
+                     "Review Study 0",
+                     "SAP Study 2 in process"]},
 
           { ID: "6",
             time:"2018 1Q",
-            bullet:  "Submission manuscript Study 1 Finalizing SAP (study 2)"},
+            bullet:  ["Submission manuscript Study 1",
+                      "Finalizing SAP (study 2)"]},
 
           { ID: "7",
             time:"2018 2Q",
-            bullet:  "Data analysis Study 2 Preparing manuscript (study 2)"}
+            bullet: [ "Data analysis Study 2",
+                      "Preparing manuscript (study 2)"]}
           ];
 
 
@@ -65,7 +76,7 @@ var bullets = chart.append("g")
 
 // Create a Line // 
 
-vvar line = circlegroup.append("line")
+var line = circlegroup.append("line")
 
 var elements = chart.selectAll("circle")
                            .data(circleData);
@@ -95,7 +106,7 @@ var lineAttributs = line
                     .attr("opacity", 0.8)  // colour the line
                     .attr("x1", function(d){return  65.2})     // x position of the first end of the line
                     .attr("y1", 30)      // y position of the first end of the line
-                    .attr("x2", function(d){return 5*xPos +  65.2})     // x position of the second end of the line
+                    .attr("x2", function(d){return 6*xPos +  65.2})     // x position of the second end of the line
                     .attr("y2", 30)
 
 var circleAttributes = circles

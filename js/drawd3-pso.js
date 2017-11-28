@@ -10,35 +10,35 @@ var chartElements =
           [{
             ID: "1",
             time: "2016 4Q",
-            bullet: "ISPE abstract submitted (Study 1)",
+            bullet: ["ISPE abstract submitted (Study 1)"],
           }, 
 
           { ID: "2",
             time:"2017 1Q", 
-            bullet: " "},
+            bullet: [" "]},
 
           { ID: "3",
             time:"2017 2Q", 
-            bullet: "SAP for Study 2 finalised. Data analysis Study 2 started."},
+            bullet: ["SAP for Study 2 finalised."," Data analysis Study 2 started."]},
 
           { ID: "4",
             time:"2017 3Q", 
-            bullet: "Poster presentation ISPE (Study 1).",
+            bullet: ["Poster presentation ISPE (Study 1)."],
           },
 
           { ID: "5",
             time:"2017 4Q",
-            bullet: " Abstract submission NORPEN (study 2), Manuscript Study 1, SAP for Study 3"},
+            bullet: ["Abstract submission NORPEN (study 2)",
+                     "Manuscript Study 1","SAP for Study 3"]},
 
           { ID: "6",
             time:"2018 1Q",
-            bullet:  "Abstract submission comorbidity study. Study 3A started"},
+            bullet: ["Abstract submission comorbidity study.","Study 3A started"]},
 
           { ID: "7",
             time:"2018 2Q",
-            bullet:  "Manuscript Study 2 ready for submission"}
+            bullet: [ "Manuscript Study 2 ready for submission"]}
           ];
-
 
 
 
@@ -65,7 +65,7 @@ var bullets = chart.append("g")
 
 // Create a Line // 
 
-var line = circlegroup.append("line")
+var line = circlegroup.append("line");
 
 var elements = chart.selectAll("circle")
                            .data(circleData);
@@ -95,7 +95,7 @@ var lineAttributs = line
                     .attr("opacity", 0.8)  // colour the line
                     .attr("x1", function(d){return  65.2})     // x position of the first end of the line
                     .attr("y1", 30)      // y position of the first end of the line
-                    .attr("x2", function(d){return 5*xPos +  65.2})     // x position of the second end of the line
+                    .attr("x2", function(d){return 6*xPos +  65.2})     // x position of the second end of the line
                     .attr("y2", 30)
 
 var circleAttributes = circles

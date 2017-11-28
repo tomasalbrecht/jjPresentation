@@ -4,7 +4,6 @@ var chart = d3.select("#milestones");
 
 var milestones = document.getElementById('milestones');
 var rect = milestones.getBoundingClientRect()
-
 console.log(chart.node());
 width = chart.node().clientWidth;
 height = 2*chart.node().clientHeight;	
@@ -13,34 +12,38 @@ var chartElements =
           [{
             ID: "1",
             time: "2016 4Q",
-            bullet: "EIT Health grant recieved for vizualisation work",
+            bullet: ["EIT Health grant recieved for vizualisation work"],
           }, 
 
           { ID: "2",
             time:"2017 1Q", 
-            bullet: "Visualization collaboration with KTH begins – Student projects. Ethical permission to review medical records approved."},
+            bullet: ["Visualization collaboration with KTH begins – Student projects.", "Ethical permission to review medical records approved."]},
 
           { ID: "3",
             time:"2017 2Q", 
-            bullet: "eCRF for pilot data collection finalised"},
+            bullet: ["eCRF for pilot data collection finalised"]},
 
           { ID: "4",
             time:"2017 3Q", 
-            bullet: "SAP for pilot data analysis ready. Pilot data (200 pts) collection start. Manuscript lit review ready"},
+            bullet: ["SAP for pilot data analysis ready. Pilot data (200 pts) collection start.", 
+                     "Manuscript lit review ready"]},
 
           { ID: "5",
             time:"2017 4Q",
-            bullet:  "Lit review manuscript submission.Analysis of pilot data ready, Abstract submission natural history ASCO (pilot data), Full data collection start"},
+            bullet: ["Lit review manuscript submission.Analysis of pilot data ready",
+                     "Abstract submission natural history ASCO (pilot data)",
+                     "Full data collection start"] },
 
           { ID: "6",
             time:"2018 1Q",
-            bullet:  "SAP for comorbidity study approved. Visualization prototype ready, New postdoc"},
+            bullet: ["SAP for comorbidity study approved.",
+                     "Visualization prototype ready", "New postdoc"]},
           ];
 
 
 // SVG length
 length = chartElements.length;
-console.log("cool length", length);
+console.log("cool length :", length);
 
 xPos = (width/length);
 yPos = (height*0.7);
@@ -55,8 +58,8 @@ var circleData = chartElements;
 var circlegroup = chart.append("g")
                             .attr("id", "circlegroup");
 
-var bullets = chart.append("g")
-                            .attr("id", "bullets");
+// var bullets = chart.append("g")
+//                             .attr("id", "bullets");
 
 
 // Create a Line // 
@@ -73,7 +76,7 @@ var elmEnter = elements.enter()
 var rects = elmEnter.append("rect");
 var circles = elmEnter.append("circle");
 var titles = elmEnter.append("text");
-var bullets = elmEnter.append("text");
+//var bullets = elmEnter.append("text");
 
 
 var rectAttributes = rects
@@ -100,7 +103,6 @@ var circleAttributes = circles
                        .attr("r", 25)
                        .attr("class", "circles")
 
-
 var textAtributes = titles
                     .attr("class", "titles")
                     .attr("margin", "2px")
@@ -109,15 +111,30 @@ var textAtributes = titles
                       return "translate(" + [i*xPos+(62.5/2), 0] + ")"
                     });
 
-var bulletAtributes = bullets
-                    .attr("class", "bullets")
-                    .text(function (d) {return d.bullet})
-                    .attr("y", 65)
-                    .attr("dy", 1)
-                    .style("margin", "20px")
-                    .attr("transform", function(d, i) {
-                      return "translate(" + [i*xPos, 0] + ")"
-                    });
+var bullets = elmEnter.append("g")
+  .attr("transform", function(d, i) {
+    return "translate(" + [i*xPos, 65] + ")"
+  })
+  .each(function(d,i) {
+    d3.select(this).selectAll(".bullets").data(d.bullet).enter()
+      .append("svg:text")
+      .attr("class", "bullets")
+      .attr("dy", ".45em")
+      .attr("transform", function(d, i) {
+        return "translate(" + [0, i * 50] + ")"
+      })
+      .text(function(d,i) {return d;})
+      .call(wrap, 120)
+  })
+// var bulletAtributes = bullets
+//                     .attr("class", "bullets li")
+//                     .attr("y", 65)
+//                     .attr("dy", 1)
+//                     .style("margin", "20px")
+//                     .attr("transform", function(d, i) {
+//                       return "translate(" + [i*xPos, 0] + ")"
+//                     })
+//                     .append("tspan").attr("dy", 1).text(function(d,i) {return d.bullet[i];});
                    
 
 function wrap(text, width) {
@@ -127,7 +144,7 @@ function wrap(text, width) {
         word,
         line = [],
         lineNumber = 0,
-        lineHeight = 1.1, // ems
+        lineHeight = .45, // ems
         y = text.attr("y"),
         dy = parseFloat(text.attr("dy")),
         tspan = text.text(null).append("tspan").attr("x", 10).attr("y", y).attr("dy", dy + "em");
@@ -138,15 +155,15 @@ function wrap(text, width) {
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
-        tspan = text.append("tspan").attr("x", 10).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+        tspan = text.append("tspan").attr("x", 10).attr("y", y).attr("dy", lineHeight + dy + "em").text(word);
       }
     }
   });
-    console.log("this function works!")
+    // console.log("this function works!")
 }
 
 
-wrap(bullets, 120)
+// wrap(bullets, 120)
 
 
 function defPos() {
@@ -158,5 +175,4 @@ function defPos() {
 
 // circles.each(defPos);
 // text.each(defPos);
-
-
+console.log(circles);

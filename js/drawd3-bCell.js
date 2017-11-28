@@ -10,41 +10,44 @@ var chartElements =
           [{
             ID: "1",
             time: "2016 4Q",
-            bullet: "Prel results Study 5",
+            bullet: ["Prel results Study 5"],
           }, 
 
           { ID: "2",
             time:"2017 1Q", 
-            bullet: "Data collection preparation for phase 2 (DLBCL). Abstract Lugano (study 5)"},
+            bullet: ["Data collection preparation for phase 2 (DLBCL)."," Abstract Lugano (study 5)"]},
 
           { ID: "3",
             time:"2017 2Q", 
-            bullet: "Data collection phase 1 (FL) to commence   eCRF DLBCL studies finalized  Oral presentation Lugano (Study 5)"},
+            bullet:["Data collection phase 1 (FL) to commence",
+                    "eCRF DLBCL studies finalized  Oral presentation Lugano (Study 5)"]},
 
           { ID: "4",
             time:"2017 3Q", 
-            bullet: "Roll-out data phase 2 (DLBCL) eCRF FL studies finalized",
+            bullet: ["Roll-out data phase 2 (DLBCL)"," eCRF FL studies finalized"],
           },
 
           { ID: "5",
             time:"2017 4Q",
-            bullet: " SAP DLBCL study  SAP FL pilot study  Pilot data collection FL study Manuscript Study 5 submitted to JCO"},
+            bullet: ["SAP DLBCL study",
+                     "SAP FL pilot study",
+                     "Pilot data collection FL study",
+                     "Manuscript Study 5 submitted to JCO"]},
 
           { ID: "6",
             time:"2018 1Q",
-            bullet:  "Analysis FL pilot study ready Full data collection FL study start Abstract EHA (DLBCL)."},
+            bullet: [ "Analysis FL pilot study ready",
+                      "Full data collection FL study start",
+                      "Abstract EHA (DLBCL)."]},
 
           { ID: "7",
             time:"2018 2Q",
-            bullet:  "SAP FL study ready"}
+            bullet:  ["SAP FL study ready"]}
           ];
-
-
-
 
 // SVG length
 length = chartElements.length;
-console.log("cool length", length);
+console.log("cool length :", length);
 
 xPos = (width/length);
 yPos = (height*0.7);
@@ -59,8 +62,8 @@ var circleData = chartElements;
 var circlegroup = chart.append("g")
                             .attr("id", "circlegroup");
 
-var bullets = chart.append("g")
-                            .attr("id", "bullets");
+// var bullets = chart.append("g")
+//                             .attr("id", "bullets");
 
 
 // Create a Line // 
@@ -77,7 +80,7 @@ var elmEnter = elements.enter()
 var rects = elmEnter.append("rect");
 var circles = elmEnter.append("circle");
 var titles = elmEnter.append("text");
-var bullets = elmEnter.append("text");
+//var bullets = elmEnter.append("text");
 
 
 var rectAttributes = rects
@@ -95,7 +98,7 @@ var lineAttributs = line
                     .attr("opacity", 0.8)  // colour the line
                     .attr("x1", function(d){return  65.2})     // x position of the first end of the line
                     .attr("y1", 30)      // y position of the first end of the line
-                    .attr("x2", function(d){return 5*xPos +  65.2})     // x position of the second end of the line
+                    .attr("x2", function(d){return 6*xPos +  65.2})     // x position of the second end of the line
                     .attr("y2", 30)
 
 var circleAttributes = circles
@@ -103,7 +106,6 @@ var circleAttributes = circles
                        .attr("cy", 30)
                        .attr("r", 25)
                        .attr("class", "circles")
-
 
 var textAtributes = titles
                     .attr("class", "titles")
@@ -113,15 +115,30 @@ var textAtributes = titles
                       return "translate(" + [i*xPos+(62.5/2), 0] + ")"
                     });
 
-var bulletAtributes = bullets
-                    .attr("class", "bullets")
-                    .text(function (d) {return d.bullet})
-                    .attr("y", 65)
-                    .attr("dy", 1)
-                    .style("margin", "20px")
-                    .attr("transform", function(d, i) {
-                      return "translate(" + [i*xPos, 0] + ")"
-                    });
+var bullets = elmEnter.append("g")
+  .attr("transform", function(d, i) {
+    return "translate(" + [i*xPos, 65] + ")"
+  })
+  .each(function(d,i) {
+    d3.select(this).selectAll(".bullets").data(d.bullet).enter()
+      .append("svg:text")
+      .attr("class", "bullets")
+      .attr("dy", ".45em")
+      .attr("transform", function(d, i) {
+        return "translate(" + [0, i * 50] + ")"
+      })
+      .text(function(d,i) {return d;})
+      .call(wrap, 120)
+  })
+// var bulletAtributes = bullets
+//                     .attr("class", "bullets li")
+//                     .attr("y", 65)
+//                     .attr("dy", 1)
+//                     .style("margin", "20px")
+//                     .attr("transform", function(d, i) {
+//                       return "translate(" + [i*xPos, 0] + ")"
+//                     })
+//                     .append("tspan").attr("dy", 1).text(function(d,i) {return d.bullet[i];});
                    
 
 function wrap(text, width) {
@@ -131,7 +148,7 @@ function wrap(text, width) {
         word,
         line = [],
         lineNumber = 0,
-        lineHeight = 1.1, // ems
+        lineHeight = .45, // ems
         y = text.attr("y"),
         dy = parseFloat(text.attr("dy")),
         tspan = text.text(null).append("tspan").attr("x", 10).attr("y", y).attr("dy", dy + "em");
@@ -142,15 +159,16 @@ function wrap(text, width) {
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
-        tspan = text.append("tspan").attr("x", 10).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+        tspan = text.append("tspan").attr("x", 10).attr("y", y).attr("dy", lineHeight + dy + "em").text(word);
       }
     }
   });
-    console.log("this function works!")
+    // console.log("this function works!")
 }
 
 
-wrap(bullets, 120)
+// wrap(bullets, 120)
+
 
 function defPos() {
   d3.select(this).attr("cx", index*offset);
@@ -161,5 +179,4 @@ function defPos() {
 
 // circles.each(defPos);
 // text.each(defPos);
-
 

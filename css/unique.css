@@ -15,6 +15,10 @@ a, .la-ball-triangle-path {
 a:hover, #header.nav-solid nav a:hover {
   color: #2196f3; }
 
+#header nav a:hover {
+  opacity: 1;
+  color: #2196f3; }
+
 /* Default Icon Color */
 .icon i {
   color: #2196f3; }
@@ -123,7 +127,8 @@ body {
   font-family: 'Open Sans', sans-serif, Arial, Helvetica;
   font-size: 30px;
   font-weight: 700;
-  color: #000000; }
+  color: #000000;
+  padding-top: 20px; }
 
 .section-subtitle {
   font-family: 'Open Sans', sans-serif, Arial, Helvetica;
@@ -212,7 +217,7 @@ body {
   overflow-x: hidden; }
 
 p {
-  line-height: 25px;
+  line-height: 20px;
   text-align: justify;
   text-justify: inter-word; }
 
@@ -285,7 +290,9 @@ figure {
 /*------------------------------------------------------------------------------------------*/
 section {
   clear: both;
-  overflow: hidden; }
+  overflow: hidden;
+  background: white;
+  box-shadow: 0px -5px 5px #0000004f; }
 
 /* Rows and Columns */
 .row {
@@ -309,7 +316,7 @@ section {
 /* Targets all elements */
 [class*='col-'] {
   float: left;
-  padding: 20px; }
+  padding: 5px 20px 5px 20px; }
 
 #clients .col-2-3 [class*='col-'] {
   padding: 0; }
@@ -730,10 +737,10 @@ h4 {
   padding: 7px 0; }
 
 h5 {
-  padding: 7px 0; }
+  padding: 5px 0; }
 
 h6 {
-  padding: 7px 0; }
+  padding: 0px 0; }
 
 /* Text Alignment */
 .text-left {
@@ -2010,8 +2017,9 @@ blockquote {
   width: 45%;
   padding-left: 150px; }
 
-#teamResearchSummary {
-  background-color: #ffffff; }
+div#teamResearchSummary {
+  background-color: #ffffff;
+  height: 100%; }
 
 .projects h6 {
   font-size: 20px;
@@ -2043,7 +2051,8 @@ blockquote {
   display: inline-block;
   font-size: 0;
   line-height: 0;
-  min-height: 220px; }
+  min-height: 250px;
+  padding: 25px; }
 
 .titles {
   font-size: 16px;
@@ -2062,12 +2071,20 @@ blockquote {
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
-  min-height: 300px; }
+  min-height: 300px;
+  stroke: 3px solid red; }
 
 .download:hover {
   box-shadow: inset 5px 3px 11px rgba(0, 0, 0, 0.5);
-  color: yellow; }
+  font-weight: 600;
+  stroke-dashoffset: 1000;
+  animation: 5s linear alternate infinite; }
 
+@keyframes dash {
+  from {
+    color: #2196f3; }
+  to {
+    color: #1a77c1; } }
 .b-cell {
   background-color: #2B60DE; }
 
@@ -2088,8 +2105,30 @@ blockquote {
   box-shadow: 5px 5px 5px black;
   border: 3px solid black;
   stroke: black;
-  stroke-width: 3px; }
+  stroke-width: 3px;
+  animation: thingy 3s infinite; }
 
+.circles:nth-child(1) {
+  animation-delay: 0.5s; }
+
+.circles:nth-child(2) {
+  animation-delay: 1s; }
+
+.circles:nth-child(3) {
+  animation-delay: 1.5s; }
+
+.circles:nth-child(4) {
+  animation-delay: 2s; }
+
+@keyframes thingy {
+  0% {
+    transform: scale(0.1, 0.1);
+    opacity: 1;
+    border-width: 2; }
+  100% {
+    transform: scale(1, 1);
+    opacity: 0;
+    border-width: 0; } }
 .circles:hover {
   fill: #57aff5; }
 
@@ -2106,5 +2145,11 @@ project2 {
   padding-bottom: 10px;
   color: orange;
   width: 12.5%; }
+
+#clients {
+  background: white; }
+
+#PUBLICATIONS {
+  background: white; }
 
 /*# sourceMappingURL=unique.css.map */

@@ -10,33 +10,39 @@ var chartElements =
           [{
             ID: "1",
             time: "2016 4Q",
-            bullet: "Definition of TRD for the purposes of the included studies approved",
+            bullet: ["Definition of TRD for the purposes of the included studies approved"]
           }, 
 
           { ID: "2",
             time:"2017 1Q", 
-            bullet: "SAP substance abuse study ready"},
+            bullet: ["SAP substance abuse study ready"]},
 
           { ID: "3",
             time:"2017 2Q", 
-            bullet: "Analysis ready mortality study Submit abstract (mortality) for ECNP   New postdocs recruited"},
+            bullet: ["Analysis ready mortality study Submit abstract (mortality) for ECNP",
+                     "New postdocs recruited"]},
 
           { ID: "4",
             time:"2017 3Q", 
-            bullet: "SAP definition study  Presentation of mortality abstract ECNP  Optum data definition  manuscript/  anaylsis input",
-          },
+            bullet: ["SAP definition study",
+                    "Presentation of mortality abstract ECNP",
+                    "Optum data definition  manuscript/  anaylsis input",]},
 
           { ID: "5",
             time:"2017 4Q",
-            bullet: "Manuscript Study 2 ready for submission  SAP Study 3 ready  Analysis Study 1 and 3"},
+            bullet: ["Manuscript Study 2 ready for submission",
+                     "SAP Study 3 ready",
+                     "Analysis Study 1 and 3"]},
 
           { ID: "6",
             time:"2018 1Q",
-            bullet:  "Manuscript  Study 1  Abstract submission definition stydy Abstract submission substance abuse study ready"},
+            bullet: ["Manuscript  Study 1",
+                     "Abstract submission definition stydy", 
+                     "Abstract submission substance abuse study ready"]},
 
           { ID: "7",
             time:"2018 2Q",
-            bullet:  "Manuscript Study 3"}
+            bullet:  ["Manuscript Study 3"]}
           ];
 
 
@@ -44,7 +50,7 @@ var chartElements =
 
 // SVG length
 length = chartElements.length;
-console.log("cool length", length);
+console.log("cool length :", length);
 
 xPos = (width/length);
 yPos = (height*0.7);
@@ -59,8 +65,8 @@ var circleData = chartElements;
 var circlegroup = chart.append("g")
                             .attr("id", "circlegroup");
 
-var bullets = chart.append("g")
-                            .attr("id", "bullets");
+// var bullets = chart.append("g")
+//                             .attr("id", "bullets");
 
 
 // Create a Line // 
@@ -77,7 +83,7 @@ var elmEnter = elements.enter()
 var rects = elmEnter.append("rect");
 var circles = elmEnter.append("circle");
 var titles = elmEnter.append("text");
-var bullets = elmEnter.append("text");
+//var bullets = elmEnter.append("text");
 
 
 var rectAttributes = rects
@@ -95,7 +101,7 @@ var lineAttributs = line
                     .attr("opacity", 0.8)  // colour the line
                     .attr("x1", function(d){return  65.2})     // x position of the first end of the line
                     .attr("y1", 30)      // y position of the first end of the line
-                    .attr("x2", function(d){return 5*xPos +  65.2})     // x position of the second end of the line
+                    .attr("x2", function(d){return 6*xPos +  65.2})     // x position of the second end of the line
                     .attr("y2", 30)
 
 var circleAttributes = circles
@@ -103,7 +109,6 @@ var circleAttributes = circles
                        .attr("cy", 30)
                        .attr("r", 25)
                        .attr("class", "circles")
-
 
 var textAtributes = titles
                     .attr("class", "titles")
@@ -113,15 +118,30 @@ var textAtributes = titles
                       return "translate(" + [i*xPos+(62.5/2), 0] + ")"
                     });
 
-var bulletAtributes = bullets
-                    .attr("class", "bullets")
-                    .text(function (d) {return d.bullet})
-                    .attr("y", 65)
-                    .attr("dy", 1)
-                    .style("margin", "20px")
-                    .attr("transform", function(d, i) {
-                      return "translate(" + [i*xPos, 0] + ")"
-                    });
+var bullets = elmEnter.append("g")
+  .attr("transform", function(d, i) {
+    return "translate(" + [i*xPos, 65] + ")"
+  })
+  .each(function(d,i) {
+    d3.select(this).selectAll(".bullets").data(d.bullet).enter()
+      .append("svg:text")
+      .attr("class", "bullets")
+      .attr("dy", ".45em")
+      .attr("transform", function(d, i) {
+        return "translate(" + [0, i * 50] + ")"
+      })
+      .text(function(d,i) {return d;})
+      .call(wrap, 120)
+  })
+// var bulletAtributes = bullets
+//                     .attr("class", "bullets li")
+//                     .attr("y", 65)
+//                     .attr("dy", 1)
+//                     .style("margin", "20px")
+//                     .attr("transform", function(d, i) {
+//                       return "translate(" + [i*xPos, 0] + ")"
+//                     })
+//                     .append("tspan").attr("dy", 1).text(function(d,i) {return d.bullet[i];});
                    
 
 function wrap(text, width) {
@@ -131,7 +151,7 @@ function wrap(text, width) {
         word,
         line = [],
         lineNumber = 0,
-        lineHeight = 1.1, // ems
+        lineHeight = .45, // ems
         y = text.attr("y"),
         dy = parseFloat(text.attr("dy")),
         tspan = text.text(null).append("tspan").attr("x", 10).attr("y", y).attr("dy", dy + "em");
@@ -142,15 +162,15 @@ function wrap(text, width) {
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
-        tspan = text.append("tspan").attr("x", 10).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+        tspan = text.append("tspan").attr("x", 10).attr("y", y).attr("dy", lineHeight + dy + "em").text(word);
       }
     }
   });
-    console.log("this function works!")
+    // console.log("this function works!")
 }
 
 
-wrap(bullets, 120)
+// wrap(bullets, 120)
 
 
 function defPos() {
